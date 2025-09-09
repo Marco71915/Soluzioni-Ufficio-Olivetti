@@ -63,35 +63,27 @@
     Seguici su Instagram
   </div>
 
-  <!-- Bottone Facebook -->
-  <div class="link-button" id="facebookButton" role="button" tabindex="0">
+  <!-- Bottone Facebook (link diretto al profilo web) -->
+  <a class="link-button" href="https://www.facebook.com/ufficiosrl.soluzione" target="_blank">
     <img class="icon" src="https://cdn-icons-png.flaticon.com/512/733/733547.png" alt="Facebook" />
     Seguici su Facebook
-  </div>
+  </a>
 
   <script>
+    document.getElementById('instagramButton').addEventListener('click', function () {
+      openAppOrWeb('instagram://user?username=soluzione_ufficio_olivetti', 'https://www.instagram.com/soluzione_ufficio_olivetti/');
+    });
+
     // Funzione generica per tentare apertura app + fallback web
     function openAppOrWeb(appUrl, webUrl) {
       const start = Date.now();
-      // Prova ad aprire l'app
       window.location = appUrl;
-
-      // Dopo 1 secondo controlla se l'app non si è aperta (semplice fallback)
       setTimeout(function() {
-        // Se il tempo trascorso è inferiore a 1.5 sec, probabilmente l'app non si è aperta
         if (Date.now() - start < 1500) {
           window.open(webUrl, '_blank');
         }
       }, 1000);
     }
-
-    document.getElementById('facebookButton').addEventListener('click', function () {
-      openAppOrWeb('fb://page/796535743722847', 'https://www.facebook.com/ufficiosrl.soluzione');
-    });
-
-    document.getElementById('instagramButton').addEventListener('click', function () {
-      openAppOrWeb('instagram://user?username=soluzione_ufficio_olivetti', 'https://www.instagram.com/soluzione_ufficio_olivetti/');
-    });
   </script>
 </body>
 </html>
